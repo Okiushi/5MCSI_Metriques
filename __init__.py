@@ -43,9 +43,9 @@ def commitsdata():
     results = []
     for list_element in json_content:
         dt_value = list_element.get('commit', {}).get('author', {}).get('date')
-        date_object = datetime.strptime(dt_value, '%Y-%m-%dT%H:%M:%SZ')
-        minutes = date_object.minute
-        results.append({'minutes': minutes})
+        minutes = datetime.strptime(dt_value, '%Y-%m-%dT%H:%M:%SZ')
+        commits = list_element.get('commit', {}).get('author', {}).get('name')
+        results.append({'minutes': minutes,'commits': commits})
     return jsonify(results=results)
 
 @app.route("/commits/")
