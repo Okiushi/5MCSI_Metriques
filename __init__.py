@@ -40,12 +40,17 @@ def commitsdata():
     response = urlopen('https://api.github.com/repos/Okiushi/5MCSI_Metriques/commits')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
+    commits_per_min = {}
     results = []
     for list_element in json_content:
         dt_value = list_element.get('commit', {}).get('author', {}).get('date')
         minutes = datetime.strptime(dt_value, '%Y-%m-%dT%H:%M:%SZ')
-        commits = list_element.get('commit', {}).get('author', {}).get('name')
-        results.append({'minutes': minutes,'commits': commits})
+        if minutes in commits_per_min:
+            commits_per_min[minutes] += 1
+        else:
+            commits_per_min[minutes] = 1
+    for key in commits_per_min:
+        results.append({'date': key, 'commits': commits_per_min[key]})
     return jsonify(results=results)
 
 @app.route("/commits/")
