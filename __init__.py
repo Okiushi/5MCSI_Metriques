@@ -45,12 +45,14 @@ def commitsdata():
     for list_element in json_content:
         dt_value = list_element.get('commit', {}).get('author', {}).get('date')
         minutes = datetime.strptime(dt_value, '%Y-%m-%dT%H:%M:%SZ')
+        minutes = minutes.minute
         if minutes in commits_per_min:
             commits_per_min[minutes] += 1
         else:
             commits_per_min[minutes] = 1
     for key in commits_per_min:
         results.append({'date': key, 'commits': commits_per_min[key]})
+        print(key, commits_per_min[key])
     return jsonify(results=results)
 
 @app.route("/commits/")
