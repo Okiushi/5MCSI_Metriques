@@ -17,7 +17,7 @@
                 var dataTable = new google.visualization.DataTable();
                 // Puis on utilise les données de commitsdata avec minutes et commits
                 dataTable.addColumn('string', 'Date');
-                dataTable.addColumn('number', 'Valeur');
+                dataTable.addColumn('number', 'minutes');
                 data.results.forEach(entry => {
                     var date = new Date(entry.minutes * 1000);
                     dataTable.addRow([date.toLocaleDateString(), entry.commits]);
