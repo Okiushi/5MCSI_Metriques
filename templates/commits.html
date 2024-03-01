@@ -19,9 +19,9 @@
                 dataTable.addColumn('string', 'minutes');
                 dataTable.addColumn('number', 'commits');
                 data.results.forEach(entry => {
-                    print(entry.minutes);
+                    console.log(entry.minutes);
                     var date = new Date(entry.minutes);
-                    print(date);
+                    console.log(date);
                     dataTable.addRow([date.toLocaleDateString(), entry.commits]);
                 });
                 
