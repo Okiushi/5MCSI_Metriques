@@ -20,6 +20,7 @@
                 data.results.forEach(entry => {
                     var date = new Date(entry.minute * 1000);
                     dataTable.addRow([date.toLocaleDateString(), entry.commits]);
+                });
                 // Configurer les options du graphique en ligne
                 var options = {
                     title: 'Nombre de commits par minute',
