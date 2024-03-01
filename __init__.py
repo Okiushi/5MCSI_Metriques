@@ -45,6 +45,7 @@ def commitsdata():
     for list_element in json_content:
         dt_value = list_element.get('commit', {}).get('author', {}).get('date')
         minutes = datetime.strptime(dt_value, '%Y-%m-%dT%H:%M:%SZ')
+        minutes = int(minutes.timestamp() / 60)
         if minutes in commits_per_min:
             commits_per_min[minutes] += 1
         else:
