@@ -52,8 +52,6 @@ def commitsdata():
             commits_per_min[minutes] = 1
     for key in commits_per_min:
         results.append({'date': key, 'commits': commits_per_min[key]})
-    print(commits_per_min)
-    print(results)
     return jsonify(results=results)
 
 
