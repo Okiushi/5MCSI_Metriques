@@ -16,7 +16,7 @@
                 // Convertir les données récupérées en un tableau utilisable par Google Charts
                 var dataTable = new google.visualization.DataTable();
                 // Puis on utilise les données de commitsdata avec minutes et commits
-                dataTable.addColumn('string', 'minutes');
+                dataTable.addColumn('date', 'minutes');
                 dataTable.addColumn('number', 'commits');
                 data.results.forEach(entry => {
                     var date = new Date(entry.minutes * 1000);
