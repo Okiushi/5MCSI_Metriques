@@ -16,10 +16,11 @@
                 // Convertir les données récupérées en un tableau utilisable par Google Charts
                 var dataTable = new google.visualization.DataTable();
                 // Puis on utilise les données de commitsdata avec minutes et commits
-                dataTable.addColumn('string', 'date');
-                dataTable.addColumn('number', 'commits');
+                dataTable.addColumn('string', 'Date');
+                dataTable.addColumn('number', 'Valeur');
                 data.results.forEach(entry => {
-                    dataTable.addRow([entry.minutes, entry.commits]);
+                    var date = new Date(entry.minutes * 1000);
+                    dataTable.addRow([date.toLocaleDateString(), entry.commits]);
                 });
                 
                 // Configurer les options du graphique en ligne
@@ -28,7 +29,7 @@
                     curveType: 'function',
                     legend: { position: 'bottom' }
                 };
-                var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
+                var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
                 chart.draw(dataTable, options);
             }
             // Récupération de données depuis notre API /commitsdata/
