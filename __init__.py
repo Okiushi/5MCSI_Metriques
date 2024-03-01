@@ -36,7 +36,7 @@ def monhistogramme():
     return render_template("graphique2.html")
 
 @app.route('/commitsdata/')
-def meteo():
+def commitsdata():
     response = urlopen('https://api.github.com/repos/Okiushi/5MCSI_Metriques/commits')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
