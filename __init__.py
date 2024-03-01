@@ -35,9 +35,23 @@ def mongraphique():
 def monhistogramme():
     return render_template("graphique2.html")
 
+@app.route('/commitsdata/')
+def meteo():
+    response = urlopen('https://api.github.com/repos/Okiushi/5MCSI_Metriques/commits')
+    raw_content = response.read()
+    json_content = json.loads(raw_content.decode('utf-8'))
+    results = []
+    for list_element in json_content:
+        dt_value = list_element.get('commit', {}).get('author', {}).get('date')
+        date_object = datetime.strptime(dt_value, '%Y-%m-%dT%H:%M:%SZ')
+        minutes = date_object.minute
+        results.append({'minutes': minutes})
+    return jsonify(results=results)
+
 @app.route("/commits/")
 def commits():
     return render_template("commits.html")
+    
 
 if __name__ == "__main__":
   app.run(debug=True)
