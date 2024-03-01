@@ -17,10 +17,10 @@
                 var dataTable = new google.visualization.DataTable();
                 dataTable.addColumn('string', 'minutes');
                 dataTable.addColumn('number', 'commits');
+                print(entry.minutes);
                 data.results.forEach(entry => {
-                    console.log(entry.minutes);
                     var date = new Date(entry.minutes);
-                    console.log(date);
+                    print(date);
                     dataTable.addRow([date.toLocaleDateString(), entry.commits]);
                 });
                 
