@@ -15,7 +15,7 @@
             function drawChart(data) {
                 // Convertir les données récupérées en un tableau utilisable par Google Charts
                 var dataTable = new google.visualization.DataTable();
-                dataTable.addColumn('string', 'minutes');
+                dataTable.addColumn('string', 'date');
                 dataTable.addColumn('number', 'commits');
                 data.results.forEach(entry => {
                     console.log(entry.minutes, entry.commits);
