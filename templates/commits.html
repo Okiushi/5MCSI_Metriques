@@ -13,12 +13,12 @@
         google.charts.setOnLoadCallback(drawBackgroundColor);
         function drawBackgroundColor() {
             function drawChart(data) {
-                console.log(data);
                 // Convertir les données récupérées en un tableau utilisable par Google Charts
                 var dataTable = new google.visualization.DataTable();
                 dataTable.addColumn('string', 'minutes');
                 dataTable.addColumn('number', 'commits');
                 data.results.forEach(entry => {
+                    console.log(entry.minutes, entry.commits);
                     var date = new Date(entry.minutes);
                     dataTable.addRow([date.toLocaleDateString(), entry.commits]);
                 });
