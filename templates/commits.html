@@ -19,7 +19,7 @@
                 dataTable.addColumn('string', 'date');
                 dataTable.addColumn('number', 'commits');
                 data.results.forEach(entry => {
-                    dataTable.addRow([entry.minutes, entry.commits]);
+                    dataTable.addRow([entry.date, entry.commits]);
                 });
                 
                 // Configurer les options du graphique en ligne
