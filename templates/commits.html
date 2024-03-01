@@ -17,7 +17,7 @@
                 var dataTable = new google.visualization.DataTable();
                 // Puis on utilise les données de commitsdata avec minutes et commits
                 dataTable.addColumn('number', 'Minutes');
-                dataTable.addColumn('number', 'Commits');
+                dataTable.addColumn('string', 'Commits');
                 data.results.forEach(entry => {
                     dataTable.addRow([entry.minutes, entry.commits]);
                 });
