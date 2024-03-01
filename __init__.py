@@ -12,7 +12,7 @@ def hello_world(): # To test :)
     return render_template('hello.html')
   
 @app.route("/contact/")
-def MaPremiereAPI():
+def contact():
     return render_template('contact.html')
 
 @app.route('/tawarano/')
@@ -34,6 +34,10 @@ def mongraphique():
 @app.route("/histogramme/")
 def monhistogramme():
     return render_template("graphique2.html")
+
+@app.route("/commits/")
+def commits():
+    return render_template("commits.html")
 
 if __name__ == "__main__":
   app.run(debug=True)
