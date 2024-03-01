@@ -51,6 +51,8 @@ def commitsdata():
             commits_per_min[minutes] = 1
     for key in commits_per_min:
         results.append({'date': key, 'commits': commits_per_min[key]})
+    print(results)
+    print(json.dumps(results))
     return jsonify(results=results)
 
 @app.route("/commits/")
